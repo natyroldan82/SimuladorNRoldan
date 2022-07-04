@@ -1,0 +1,38 @@
+
+
+
+body{
+    background: rgb(238,174,202);
+    background: radial-gradient(circle, rgba(238,174,202,1) 0%, rgba(148,187,233,1) 100%); 
+
+}
+
+.container{
+    background-color: white;
+    padding: 5rem;
+    padding-left: 10rem;
+    margin-top: 5rem;
+    border-radius: 2.5rem;
+    display: block;
+    justify-content: center;
+    align-content: center center;
+  
+   
+} 
+.mostrar{
+    display: flex;
+    flex-direction: column;
+   
+}
+.presupuesto{
+    width: 25rem;
+    background-color: blue;
+    color: white;
+    font-size: 2.5rem;
+}
+.saldo{
+    width: 15rem;
+    background-color: green;
+    color: white;
+    font-size: 2.5rem;
+}

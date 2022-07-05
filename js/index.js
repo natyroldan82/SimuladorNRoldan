@@ -25,11 +25,12 @@ class Presupuesto{
         this.gastos=[];
     }
     nuevoGasto(gasto){
-        this.gastos= [...this.gastos,gasto];//... copia el arreglo y pasamos gasto al final
+        this.gastos= [...this.gastos,gasto];//... copia el arreglo y paso gasto al final
         this.calcularRestante();
     }
     calcularRestante(){
-        
+        const gastado=this.gastos.reduce((total,gasto)=>total+gasto.cantidad, 0);
+        this.restante= this.presupuesto-gastado;
     }
 }
 class MOSTRAR{
@@ -52,7 +53,9 @@ class MOSTRAR{
                 divMensaje.remove();
             }, 3000);
        }
-
+        actualizarRestante(restante){
+            document.querySelector('#saldo').textContent=restante; 
+        }
     }
 //Instanciar
 const mostrar=new MOSTRAR(); 
@@ -64,7 +67,7 @@ function preguntarPresupuesto(){
     const presupuestoInicial= prompt('Cual es tu presupuesto?');
     console.log(Number(presupuestoInicial));
     if (presupuestoInicial ===''|| presupuestoInicial === null || isNaN(presupuestoInicial)||presupuestoInicial <=0)
-    { //si le doy a cancelar o aceptar no va a empezar
+    { //si le doy a cancelar o aceptar no va a cargar
         window.location.reload();
     }
    presupuesto=new Presupuesto(presupuestoInicial);
@@ -89,9 +92,13 @@ function agregarGasto(e){
        
       } 
       const gasto={nombre,cantidad}
-      // ingresamos nuevo gasto
+      // ingreso nuevo gasto
       presupuesto.nuevoGasto(gasto);
       mostrar.imprimirAlerta('Gasto Correctamente');
+      //imprimo los gastos
+      const {gastos,restante}=presupuesto;
+    
+      mostrar.actualizarRestante(restante);
       formulario.reset();
       } 
     

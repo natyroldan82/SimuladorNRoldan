@@ -63,6 +63,7 @@ let presupuesto;
 
 
 //funciones
+preguntarPresupuesto();
 function preguntarPresupuesto(){
     const presupuestoInicial= prompt('Cual es tu presupuesto?');
     console.log(Number(presupuestoInicial));
@@ -75,6 +76,7 @@ function preguntarPresupuesto(){
    mostrar.insertarPresupuesto(presupuesto);
 }
 //validacion para el formulario agregar
+agregarGasto(e);
 function agregarGasto(e){
     e.preventDefault();
 

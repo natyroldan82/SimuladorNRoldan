@@ -3,9 +3,6 @@ const formulario=document.querySelector('#agregar-gasto');
 const listado=document.querySelector('#mostrar total');
 
 
-
-
-
 //eventos
 
 eventListeners();
@@ -15,17 +12,15 @@ function eventListeners(){
     formulario.addEventListener('submit',agregarGasto);
 }
 
-
-
 //clases
 class Presupuesto{
     constructor(presupuesto){
         this.presupuesto= Number(presupuesto);
         this.restante= Number(presupuesto);
-        this.gastos=[];
+        this.gastos=[]; // mi array
     }
     nuevoGasto(gasto){
-        this.gastos= [...this.gastos,gasto];//... copia el arreglo y paso gasto al final
+        this.gastos= [...this.gastos,gasto]; //... topia  el arreglo y se agrega el nuevo gasto
         this.calcularRestante();
     }
     calcularRestante(){
@@ -63,12 +58,12 @@ let presupuesto;
 
 
 //funciones
-preguntarPresupuesto();
+
 function preguntarPresupuesto(){
     const presupuestoInicial= prompt('Cual es tu presupuesto?');
     console.log(Number(presupuestoInicial));
     if (presupuestoInicial ===''|| presupuestoInicial === null || isNaN(presupuestoInicial)||presupuestoInicial <=0)
-    { //si le doy a cancelar o aceptar no va a cargar
+    { //si le doy a cancelar o aceptar no va a cargar 
         window.location.reload();
     }
    presupuesto=new Presupuesto(presupuestoInicial);

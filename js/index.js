@@ -20,7 +20,7 @@ class Presupuesto{
         this.gastos=[]; // mi array
     }
     nuevoGasto(gasto){
-        this.gastos= [...this.gastos,gasto]; //... topia  el arreglo y se agrega el nuevo gasto
+        this.gastos= [...this.gastos,gasto]; //... copia  el arreglo y se agrega el nuevo gasto
         this.calcularRestante();
     }
     calcularRestante(){

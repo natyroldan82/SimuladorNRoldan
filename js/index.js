@@ -80,12 +80,12 @@ function agregarGasto(e){
     //validar
     if(nombre ==='' || cantidad ===''){
         mostrar.imprimirAlerta('Ambos campos son obligatorios','error');
-        
+        return;
     }
         
       else if(cantidad <= 0 || isNaN(cantidad)){
         mostrar.imprimirAlerta('Cantidad no valida','error');
-        
+        return;
        
       } 
       const gasto={nombre,cantidad}

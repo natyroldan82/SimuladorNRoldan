@@ -24,3 +24,9 @@ body{
     flex-direction: column;
    
 }
+/* agrego gastos al html*/
+.listado,h3{
+    font-size: 1.8rem;
+    text-align: center;
+    color: rgb(105, 103, 107);
+}

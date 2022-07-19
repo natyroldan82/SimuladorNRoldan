@@ -6,9 +6,10 @@ const listado=document.querySelector('#mostrar total');
 //eventos
 
 eventListeners();
-function eventListeners(){
+function eventListeners()
+{
     document.addEventListener('DOMContentLoaded',preguntarPresupuesto);
-    console.log (Number(preguntarPresupuesto));
+    console.log(Number(preguntarPresupuesto));
     formulario.addEventListener('submit',agregarGasto);
 }
 
@@ -62,7 +63,8 @@ let presupuesto;
 function preguntarPresupuesto(){
     const presupuestoInicial= prompt('Cual es tu presupuesto?');
     console.log(Number(presupuestoInicial));
-    if (presupuestoInicial ===''|| presupuestoInicial === null || isNaN(presupuestoInicial)||presupuestoInicial <=0)
+    if (presupuestoInicial ===''|| presupuestoInicial === null
+     || isNaN(presupuestoInicial)||presupuestoInicial <=0)
     { //si le doy a cancelar o aceptar no va a cargar 
         window.location.reload();
     }
@@ -71,7 +73,7 @@ function preguntarPresupuesto(){
    mostrar.insertarPresupuesto(presupuesto);
 }
 //validacion para el formulario agregar
-agregarGasto(e);
+
 function agregarGasto(e){
     e.preventDefault();
 
@@ -93,9 +95,9 @@ function agregarGasto(e){
       presupuesto.nuevoGasto(gasto);
       mostrar.imprimirAlerta('Gasto Correctamente');
       //imprimo los gastos
-      const {gastos,restante}=presupuesto;
+      const {gastos ,restante}=presupuesto;
     
       mostrar.actualizarRestante(restante);
       formulario.reset();
       } 
-    
+     

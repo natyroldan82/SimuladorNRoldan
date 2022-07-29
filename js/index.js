@@ -1,14 +1,8 @@
-//variables y selectores
-/*input.oninput = function() {
-    presu.innerHTML = input.value;
-    
-  }*/
-
 
 //variables y selectores
 const formulario=document.querySelector('#agregar-gasto');
 const listado=document.querySelector('#mostrar total');
-const agregarListado=document.querySelector('#agregarListado');
+const agregarGastoListado=document.querySelector('#agregarListado');
 
 
 //eventos
@@ -64,19 +58,26 @@ class MOSTRAR{
             document.querySelector('#saldo').textContent=restante; 
         }
         //iterar
-      /* agregarListado(gastos){
+        agregarGastoListado(gastos){
+            this.limpiarHTML();
+
             gastos.forEach(gasto => {
                 const {cantidad, nombre, id} = gasto;
                 const nuevoGasto= document.createElement('li');
-              nuevoGasto.className='list-group-item d-flex justify-content-between align-items-center';
-              nuevoGasto.dataset.id = id;
-              console.log(nuevoGasto);
+              /*nuevoGasto.className= 'list-group-item d-flex justify-content-between align-items-center';
+              nuevoGasto.dataset.id = id;*/
+              
 
-              nuevoGasto.innerText=`${nombre} < span class="badge-primary badge-pill"> ${cantidad}</span`;
-              agregarListado.appendChild(li);
-            })*/
+              nuevoGasto.innerHTML=`${nombre} <span class="badge-primary badge-pill"> ${cantidad} </span>`;
+              agregarGastoListado.appendChild(nuevoGasto);
+            })
+            }
+            limpiarHTML(){
+                while (agregarGastoListado.firstChild){
+                    agregarGastoListado.removeChild(agregarGastoListado.firstChild);
+                }
         }
-    
+}
 //Instanciar
 const mostrar=new MOSTRAR(); 
  
@@ -88,6 +89,7 @@ let presupuesto;
    
 
 function preguntarPresupuesto(){
+   
     const presupuestoInicial=Number( document.querySelector('#presupuestoInicial').value);
   
    presupuesto=new Presupuesto(presupuestoInicial);
@@ -123,7 +125,7 @@ function agregarGasto(e){
       //imprimo los gastos
       const {gastos ,restante}=presupuesto;
 
-     /*/ mostrar.agregarListado(presupuesto);*/
+      mostrar.agregarGastoListado(gastos);
       mostrar.actualizarRestante(restante);
       
 

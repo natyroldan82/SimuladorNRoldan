@@ -3,16 +3,15 @@
 const formulario=document.querySelector('#agregar-gasto');
 const listado=document.querySelector('#mostrar total');
 const agregarGastoListado=document.querySelector('#agregarListado');
-
+const btnInicial=document.getElementById("btnInicial");
 
 //eventos
-
+ 
 eventListeners();
 function eventListeners()
 {
-   
+    btnInicial.addEventListener('click',preguntarPresupuesto);
     formulario.addEventListener('submit',agregarGasto);
-    document.addEventListener('onclick',preguntarPresupuesto);
     gastos=JSON.parse( localStorage.getItem('gastos') || []);
 }
 

@@ -1,0 +1,19 @@
+{
+  "name": "simuladornroldan",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/natyroldan82/SimuladorNRoldan.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/natyroldan82/SimuladorNRoldan/issues"
+  },
+  "homepage": "https://github.com/natyroldan82/SimuladorNRoldan#readme"
+}

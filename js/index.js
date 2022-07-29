@@ -4,15 +4,17 @@ const formulario=document.querySelector('#agregar-gasto');
 const listado=document.querySelector('#mostrar total');
 const agregarGastoListado=document.querySelector('#agregarListado');
 const btnInicial=document.getElementById("btnInicial");
-
+const presu=document.querySelector('#presupuestoInicial');
 //eventos
  
 eventListeners();
 function eventListeners()
 {
+    presu.focus();
     btnInicial.addEventListener('click',preguntarPresupuesto);
     formulario.addEventListener('submit',agregarGasto);
-    gastos=JSON.parse( localStorage.getItem('gastos') || []);
+    gastos=JSON.parse( localStorage.getItem('gastos'));
+    
 }
 
 //clases
@@ -95,6 +97,7 @@ function preguntarPresupuesto(){
    console.log(presupuesto)
    const {gastos ,restante}=presupuesto;
    mostrar.insertarPresupuesto(presupuesto);
+  
    
 }
 //validacion para el formulario agregar

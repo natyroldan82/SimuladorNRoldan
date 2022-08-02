@@ -13,7 +13,7 @@ function eventListeners()
     presu.focus();
     btnInicial.addEventListener('click',preguntarPresupuesto);
     formulario.addEventListener('submit',agregarGasto);
-    gastos=JSON.parse( localStorage.getItem('gastos'));
+    gastos=JSON.parse( localStorage.getItem('gastos') || []);//operador or
     
 }
 
@@ -25,11 +25,11 @@ class Presupuesto{
         this.gastos=[]; // mi array
     }
     nuevoGasto(gasto){
-        this.gastos= [...this.gastos,gasto]; //... copia  el arreglo y se agrega el nuevo gasto
+        this.gastos= [...this.gastos,gasto]; //
         this.calcularRestante();
     }
     calcularRestante(){
-        const gastado=this.gastos.reduce((total,gasto)=>total+gasto.cantidad, 0);
+        const gastado=this.gastos.reduce((total,gasto)=>total+gasto.cantidad, 0);//Rest Parameters
         this.restante= this.presupuesto-gastado;
     }
  
@@ -37,7 +37,7 @@ class Presupuesto{
 
 class MOSTRAR{
     insertarPresupuesto(cantidad){
-        const{presupuesto,restante}=cantidad;
+        const{presupuesto,restante}=cantidad; // desestructuración 
         document.querySelector('#total').textContent=presupuesto;
         document.querySelector('#saldo').textContent=restante;
     }   
@@ -93,12 +93,17 @@ function preguntarPresupuesto(){
     const presupuestoInicial=Number( document.querySelector('#presupuestoInicial').value);
   
    presupuesto=new Presupuesto(presupuestoInicial);
-   console.log(presupuesto)
-   const {gastos ,restante}=presupuesto;
-   mostrar.insertarPresupuesto(presupuesto);
-  
-   
+   if (presupuestoInicial ===''|| presupuestoInicial === null
+     || isNaN(presupuestoInicial)||presupuestoInicial <=0)
+    {
+        window.location.reload();
 }
+        else{
+            console.log(presupuesto)
+            const {gastos ,restante}=presupuesto;
+            mostrar.insertarPresupuesto(presupuesto);
+        } 
+    }
 //validacion para el formulario agregar
 
 function agregarGasto(e){
@@ -119,7 +124,7 @@ function agregarGasto(e){
        
       } 
       
-      const gasto={nombre,cantidad, id: Date.now()}
+      const gasto={nombre,cantidad, id: Date.now()}//desestructurado por parámetro
       // ingreso nuevo gasto
       presupuesto.nuevoGasto(gasto);
       mostrar.imprimirAlerta('Gasto Correctamente');

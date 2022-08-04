@@ -140,7 +140,7 @@ function agregarGasto(e){
             showConfirmButton: false,
            timer: 3000
           }) 
-       //mostrar.imprimirAlerta('Cantidad no valida','error');
+       //mostrar.imprimirAlerta('Cantidad no valida','error');//utilice SweetAlert 
         return;
        
       } 
@@ -148,16 +148,18 @@ function agregarGasto(e){
       const gasto={nombre,cantidad, id: Date.now()}//desestructurado por parámetro
       // ingreso nuevo gasto
       presupuesto.nuevoGasto(gasto);
+      document.getElementById("gasto").focus();
       Swal.fire({
         position: 'center',
         icon: 'success',
         title: 'Se agregó Gasto',
         showConfirmButton: false,
-        timer: 2500
+        timer: 1000
       })
       //mostrar.imprimirAlerta('Gasto Correctamente'); cambie las alertas simples por SweetAlert
       //imprimo los gastos
       const {gastos ,restante}=presupuesto;
+    
 
       mostrar.agregarGastoListado(gastos);
       mostrar.actualizarRestante(restante);
@@ -170,9 +172,10 @@ function agregarGasto(e){
         localStorage.setItem('gastos',gastoString);
 
      formulario.reset();
+     
    
     }
-    //fecha
+    //fecha . 
     let hoy= new Date(),
         dia= hoy.getDay(),
         mes= hoy.getMonth(),

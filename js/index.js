@@ -57,6 +57,7 @@ class MOSTRAR{
        }
         actualizarRestante(restante){
             document.querySelector('#saldo').textContent=restante; 
+            
         }
         //iterar
         agregarGastoListado(gastos){
@@ -91,48 +92,77 @@ let presupuesto;
 function preguntarPresupuesto(){
    
     const presupuestoInicial=Number( document.querySelector('#presupuestoInicial').value);
-  
+   
    presupuesto=new Presupuesto(presupuestoInicial);
+ 
    if (presupuestoInicial ===''|| presupuestoInicial === null
      || isNaN(presupuestoInicial)||presupuestoInicial <=0)
-    {
+    { 
         window.location.reload();
-}
-        else{
-            console.log(presupuesto)
+         
+       
+}else{
+             console.log(presupuesto)
             const {gastos ,restante}=presupuesto;
             mostrar.insertarPresupuesto(presupuesto);
+           
         } 
+
+       
     }
 //validacion para el formulario agregar
 
 function agregarGasto(e){
     e.preventDefault();
+    
 //leo datos del formulario
     const nombre=document.querySelector('#gasto').value; //leo los datos del formulario
     const cantidad= Number(document.querySelector('#cantidad').value);
-   
+    
     //valido campos
     if(nombre ==='' || cantidad ===''){
-        mostrar.imprimirAlerta('Ambos campos son obligatorios','error');
+        Swal.fire({
+            position: 'center',
+            icon: 'warning',
+            title: 'Ambos campos son obligatorios',
+            showConfirmButton: false,
+            timer: 3000
+          })
+        //mostrar.imprimirAlerta('Ambos campos son obligatorios','error');
         return;
     }
         
       else if(cantidad <=0 || isNaN(cantidad)){
-        mostrar.imprimirAlerta('Cantidad no valida','error');
+       Swal.fire({
+            position: 'center',
+            icon: 'error',
+            title: 'Cantidad no válida',
+            showConfirmButton: false,
+           timer: 3000
+          }) 
+       //mostrar.imprimirAlerta('Cantidad no valida','error');
         return;
        
       } 
-      
+       
       const gasto={nombre,cantidad, id: Date.now()}//desestructurado por parámetro
       // ingreso nuevo gasto
       presupuesto.nuevoGasto(gasto);
-      mostrar.imprimirAlerta('Gasto Correctamente');
+      Swal.fire({
+        position: 'center',
+        icon: 'success',
+        title: 'Se agregó Gasto',
+        showConfirmButton: false,
+        timer: 2500
+      })
+      //mostrar.imprimirAlerta('Gasto Correctamente'); cambie las alertas simples por SweetAlert
       //imprimo los gastos
       const {gastos ,restante}=presupuesto;
 
       mostrar.agregarGastoListado(gastos);
       mostrar.actualizarRestante(restante);
+      presu.value="";
+      
       
 
 
@@ -140,6 +170,22 @@ function agregarGasto(e){
         localStorage.setItem('gastos',gastoString);
 
      formulario.reset();
-    
+   
     }
-     
+    //fecha
+    let hoy= new Date(),
+        dia= hoy.getDay(),
+        mes= hoy.getMonth(),
+        year=hoy.getFullYear();
+    
+    let pdiaSemana= document.getElementById('diaSemana');
+    let pdia= document.getElementById('dia');
+    let pmes=document.getElementById('mes');
+    let pyear=document.getElementById('year');
+    let dias=['Domingo','Lunes','Martes','Miercoles','Jueves','Viernes','Sabado'];
+    let meses=['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre']
+    let numeroDiaSemana= hoy.getDay();
+    pdiaSemana.textContent= dias[numeroDiaSemana];
+    pdia.textContent=dia;
+    pmes.textContent=meses[mes];
+    pyear.textContent=year;

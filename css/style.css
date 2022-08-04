@@ -1,3 +1,13 @@
+html {
+  
+    box-sizing: border-box;
+    margin: 0 ;
+   
+   
+}
+*, *:before, *:after {
+    box-sizing: inherit;
+}
 
 
 
@@ -6,7 +16,12 @@ body{
     background: radial-gradient(circle, rgba(238,174,202,1) 0%, rgba(148,187,233,1) 100%); 
 
 }
-
+.btn-secondary{
+    margin-top:1rem;
+}
+.btn-primary{
+    margin-top:1rem;
+}
 .container{
     background-color: white;
     padding: 5rem;
@@ -47,4 +62,30 @@ span{
     flex-direction: column;
     text-align: center;
    padding: 50px;
+}
+.wrap{
+    width:50%;
+    
+    margin: auto;
+    text-align: center;
+
+}
+.widget{
+    width: auto;
+    margin:32px;
+}
+.widget p{
+    display: inline-block;
+    line-height: 10px;
+}
+.fecha{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    text-align: center;
+    font-size: 25px;
+    color: white;
+    margin-bottom:5px ;
+    background: rgba(202, 135, 187, 0.5);
+    padding: 20px;
+ 
+    
 }

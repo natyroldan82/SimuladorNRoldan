@@ -92,14 +92,14 @@ let presupuesto;
 function preguntarPresupuesto(){
    
     const presupuestoInicial=Number( document.querySelector('#presupuestoInicial').value);
-   
+   //let inputNombre= document.querySelector('')
    presupuesto=new Presupuesto(presupuestoInicial);
  
    if (presupuestoInicial ===''|| presupuestoInicial === null
      || isNaN(presupuestoInicial)||presupuestoInicial <=0)
     { 
-        window.location.reload();
-         
+     // window.location.reload();
+     mostrar.imprimirAlerta('Ingresa valor ','error');   
        
 }else{
              console.log(presupuesto)

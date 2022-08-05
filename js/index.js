@@ -175,7 +175,7 @@ function agregarGasto(e){
      
    
     }
-    //fecha . Utilice ésta libreria independiente de JS, 
+    //fecha . Utilice ésta libreria independiente de JS,
     let hoy= new Date(),
         dia= hoy.getDay(),
         mes= hoy.getMonth(),

@@ -10,6 +10,7 @@ const presu=document.querySelector('#presupuestoInicial');
 eventListeners();
 function eventListeners()
 {
+    
     presu.focus();
     btnInicial.addEventListener('click',preguntarPresupuesto);
     formulario.addEventListener('submit',agregarGasto);
@@ -175,14 +176,15 @@ function agregarGasto(e){
      
    
     }
-    //fecha . Utilice ésta libreria en formato independiente de JS,
+   
+    
+   //fecha . Utilice ésta libreria en formato independiente de JS,
 (function(){
-        let actualizarFecha= function(){
-       
-            let hoy= new Date(),
-        dia= hoy.getDay(),
-        mes= hoy.getMonth(),
-        year=hoy.getFullYear();
+       var actualizarFecha= function(){
+        let hoy= new Date(),
+            dia= hoy.getDay(),
+            mes= hoy.getMonth(),
+            year=hoy.getFullYear();
     
     let pdiaSemana= document.getElementById('diaSemana');
     let pdia= document.getElementById('dia');
@@ -195,6 +197,7 @@ function agregarGasto(e){
     pdia.textContent=dia;
     pmes.textContent=meses[mes];
     pyear.textContent=year;
-        }
-    })
+       };
+       actualizarFecha();
+    }())
    

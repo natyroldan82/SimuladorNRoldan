@@ -176,7 +176,10 @@ function agregarGasto(e){
    
     }
     //fecha . Utilice ésta libreria en formato independiente de JS,
-    let hoy= new Date(),
+(function(){
+        let actualizarFecha= function(){
+       
+            let hoy= new Date(),
         dia= hoy.getDay(),
         mes= hoy.getMonth(),
         year=hoy.getFullYear();
@@ -192,3 +195,6 @@ function agregarGasto(e){
     pdia.textContent=dia;
     pmes.textContent=meses[mes];
     pyear.textContent=year;
+        }
+    })
+   

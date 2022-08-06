@@ -14,7 +14,7 @@ function eventListeners()
     presu.focus();
     btnInicial.addEventListener('click',preguntarPresupuesto);
     formulario.addEventListener('submit',agregarGasto);
-    gastos=JSON.parse( localStorage.getItem('gastos') || []);//operador or
+   //operador or
     
 }
 
@@ -86,11 +86,7 @@ const mostrar=new MOSTRAR();
 let presupuesto;
 
 
-//funciones
-
-   
-
-function preguntarPresupuesto(){
+   function preguntarPresupuesto(){
    
     const presupuestoInicial=Number( document.querySelector('#presupuestoInicial').value);
    //let inputNombre= document.querySelector('')
@@ -99,14 +95,14 @@ function preguntarPresupuesto(){
    if (presupuestoInicial ===''|| presupuestoInicial === null
      || isNaN(presupuestoInicial)||presupuestoInicial <=0)
     { 
-     // window.location.reload();
+     window.location.reload();
      mostrar.imprimirAlerta('Ingresa valor ','error');   
        
 }else{
-             console.log(presupuesto)
+        console.log(presupuesto)
             const {gastos ,restante}=presupuesto;
             mostrar.insertarPresupuesto(presupuesto);
-           
+            
         } 
 
        
@@ -164,40 +160,42 @@ function agregarGasto(e){
 
       mostrar.agregarGastoListado(gastos);
       mostrar.actualizarRestante(restante);
-      presu.value="";
-      
-      
-
-
+      //presu.value="";
         const gastoString=JSON.stringify(gastos);
         localStorage.setItem('gastos',gastoString);
-
+       
      formulario.reset();
      
    
     }
+
    
     
    //fecha . Utilice ésta libreria en formato independiente de JS,
-(function(){
-       var actualizarFecha= function(){
-        let hoy= new Date(),
-            dia= hoy.getDay(),
-            mes= hoy.getMonth(),
-            year=hoy.getFullYear();
+   (function(){
+    let actualizarFecha= function(){
+    const fecha= new Date(),
+         diaSemana= fecha.getDay(),
+         dia=fecha.getDay(),
+         mes= fecha.getMonth(),
+         year=fecha.getFullYear();
+       
+
+
+let  pdiaSemana= document.getElementById('diaSemana'),
+     pDia= document.getElementById('dia'),
+     pMes=document.getElementById('mes'),
+      pYear=document.getElementById('year');
+
+ let semana=['Domingo','Lunes','Martes','Miercoles','Jueves','Viernes','Sabado'];
+ pdiaSemana.textContent= semana[diaSemana];
+ pDia.textContent=dia;
+
+let meses=['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'];
+ 
+ pMes.textContent= meses[mes];
+ pYear.textContent= year;
     
-    let pdiaSemana= document.getElementById('diaSemana');
-    let pdia= document.getElementById('dia');
-    let pmes=document.getElementById('mes');
-    let pyear=document.getElementById('year');
-    let dias=['Domingo','Lunes','Martes','Miercoles','Jueves','Viernes','Sabado'];
-    let meses=['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre']
-    let numeroDiaSemana= hoy.getDay();
-    pdiaSemana.textContent= dias[numeroDiaSemana];
-    pdia.textContent=dia;
-    pmes.textContent=meses[mes];
-    pyear.textContent=year;
-       };
-       actualizarFecha();
-    }())
-   
+};
+actualizarFecha();
+}())

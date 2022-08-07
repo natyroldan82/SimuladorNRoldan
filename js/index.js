@@ -176,7 +176,7 @@ function agregarGasto(e){
     let actualizarFecha= function(){
     const fecha= new Date(),
          diaSemana= fecha.getDay(),
-         dia=fecha.getDay(),
+         dia=fecha.getDate(),
          mes= fecha.getMonth(),
          year=fecha.getFullYear();
        
@@ -196,6 +196,6 @@ let meses=['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Se
  pMes.textContent= meses[mes];
  pYear.textContent= year;
     
-};
+}
 actualizarFecha();
 }())

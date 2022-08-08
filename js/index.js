@@ -14,7 +14,7 @@ function eventListeners()
     presu.focus();
     btnInicial.addEventListener('click',preguntarPresupuesto);
     formulario.addEventListener('submit',agregarGasto);
-   //operador or
+   
     
 }
 
@@ -160,12 +160,12 @@ function agregarGasto(e){
 
       mostrar.agregarGastoListado(gastos);
       mostrar.actualizarRestante(restante);
-      //presu.value="";
+     
         const gastoString=JSON.stringify(gastos);
         localStorage.setItem('gastos',gastoString);
        
      formulario.reset();
-     
+     presu.value="";
    
     }
 

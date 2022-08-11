@@ -68,7 +68,6 @@ span{
     
     margin: auto;
     text-align: center;
-
 }
 .widget{
     width: auto;
@@ -86,6 +85,40 @@ span{
     margin-bottom:5px ;
     background: rgba(202, 135, 187, 0.5);
     padding: 20px;
- 
     
+}
+.header{
+    background-color: darkgrey;
+    color: white;
+    display:inline-block;
+    width: 100%;
+    text-align: center;
+    border-top-left-radius: 5px;
+    border-top-right-radius:5px ;
+}
+.header-img{
+    display: inline-block;
+}
+.header-img img{
+    position: absolute;
+    margin-left: -34px;
+}
+.comp{
+    width: 50%;
+    float: left;
+    background-color: beige;
+    margin-bottom: 3px;
+}
+.vent{
+    width: 50%;
+    float: right;
+    background-color: beige;
+    margin-bottom: 3px;
+}
+.conte{
+    float: left;
+    width: 32%;
+    margin-left: 1%;
+    margin-top: 1%;
+    height: 152px;
 }

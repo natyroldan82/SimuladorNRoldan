@@ -199,3 +199,16 @@ let meses=['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Se
 }
 actualizarFecha();
 }())
+
+
+
+
+
+fetch( 'https://www.dolarsi.com/api/api.php?type=valoresprincipales')
+    .then (response => response.json())
+    .then (data => {
+         console.log(data['0'].casa.compra),
+         console.log(data['0'].casa.venta)})
+         
+     
+    

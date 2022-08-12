@@ -31,8 +31,9 @@ class Presupuesto{
         this.calcularRestante();
     }
     calcularRestante(){
-        const gastado=this.gastos.reduce((total,gasto)=>total+gasto.cantidad, 0);//Rest Parameters
-        this.restante= this.presupuesto-gastado;
+        const gastado=this.gastos.reduce((total,gasto)=> total+gasto.cantidad, 0);//Rest Parameters
+        this.restante= this.presupuesto - gastado;
+        
     }
  
 }
@@ -77,6 +78,9 @@ class MOSTRAR{
                 while (agregarGastoListado.firstChild){
                     agregarGastoListado.removeChild(agregarGastoListado.firstChild);
                 }
+        }
+        actualizarRestante(restante){
+            document.querySelector('#saldo').textContent= restante;
         }
 }
 //Instanciar
@@ -153,11 +157,11 @@ function agregarGasto(e){
         showConfirmButton: false,
         timer: 1000
       })
-      mostrar.imprimirAlerta('Gasto Correctamente'); //cambie las alertas simples por SweetAlert
+      //mostrar.imprimirAlerta('Gasto Correctamente'); //cambie las alertas simples por SweetAlert
       //imprimo los gastos
-      const {gastos,restante}=presupuesto;
+      const {gastos,restante} = presupuesto;
     
-
+      mostrar.actualizarRestante (restante);
       mostrar.agregarGastoListado(gastos);
      
         const gastoString=JSON.stringify(gastos);

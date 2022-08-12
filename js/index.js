@@ -88,7 +88,7 @@ let presupuesto;
    function preguntarPresupuesto(){
    
     const presupuestoInicial=Number( document.querySelector('#presupuestoInicial').value);
-   //let inputNombre= document.querySelector('')
+ 
    presupuesto=new Presupuesto(presupuestoInicial);
  
    if (presupuestoInicial ===''|| presupuestoInicial === null
@@ -146,13 +146,13 @@ function agregarGasto(e){
       // ingreso nuevo gasto
       presupuesto.nuevoGasto(gasto);
       document.getElementById("gasto").focus();
-      /*Swal.fire({
+      Swal.fire({
         position: 'center',
         icon: 'success',
         title: 'Se agregó Gasto',
         showConfirmButton: false,
         timer: 1000
-      })*/
+      })
       mostrar.imprimirAlerta('Gasto Correctamente'); //cambie las alertas simples por SweetAlert
       //imprimo los gastos
       const {gastos,restante}=presupuesto;

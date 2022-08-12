@@ -16,6 +16,7 @@
 <body>
 	<div class="wrap"> 
 		<div class="widget">
+			
 	<div class="fecha">
 		<p id="diaSemana" class="diaSemana"></p>
 		<p id="dia" class="dia"></p>
@@ -25,6 +26,7 @@
 		<p id="year" class="year"></p>
 	</div>
 		</div>
+		
 	</div>
 	
     <div class="container">
@@ -34,7 +36,28 @@
 			<h3 class="h3">
 				Gasto Semanal
 			</h3>
-			
+			<div class="conte">
+				<div class="header">
+				<div class="header-img">
+					<img src="./img/dolar.png" style="margin-top:-30px;" width="50px">
+				</div>
+				<div class="header-text">DOLAR OFICIAL</div>
+			</div>
+			<div class="cont-cv">
+				<div class="comp">
+					<div class="text-cv">COMPRA</div>
+					<div id="c1" class="val-cv">$</div>
+				</div>
+				
+					<div class="vent">
+						<div class="text-cv">VENTA	</div>
+						<div id="v1" class="val-cv">$</div>
+					</div>
+			</div>
+		
+		</div>
+		</div>
+		</div>
 				<label for="presupuesto"></label>
 			
 			<input  type="text" style="width: 25% " class="form-control"  id="presupuestoInicial" placeholder="Ingresá tu Presupuesto" />
@@ -67,28 +90,7 @@
 						<div id="gastos">
                             <ul class="list-group"></ul>
                         </div>
-						<div class="conte">
-							<div class="header">
-							<div class="header-img">
-								<img src="/img/dolar.png" style="margin-top:-30px;" width="50px">
-							</div>
-							<div class="header-text">DOLAR OFICIAL</div>
-						</div>
-						<div class="cont-cv">
-							<div class="comp">
-								<div class="text-cv">COMPRA</div>
-								<div id="c1" class="val-cv">$134</div>
-							</div>
-							
-								<div class="vent">
-									<div class="text-cv">VENTA	</div>
-									<div id="v1" class="val-cv">$140</div>
-								</div>
-						</div>
-			
-					</div>
-					</div>
-					</div>
+						
                         <div id="presupuesto" class="presupuesto">
                             <div class="alert alert-primary">
                                 <p>Presupuesto: $ <span id="total"></span> </p>
@@ -97,17 +99,17 @@
                                 <p>Restante: $ <span id="saldo"></span></p>
                             </div>
                         </div> <!--.presupuesto-->
-                    </div> <!--.contenido-->
+                   
+						</div> <!--.contenido-->
                 </div><!--.col-->
-					
+				<div class="listado" id="agregarListado">Listado de Gastos </div>	
 				</div>
-		</div>
 	
 		</div>
-		<div class="listado" id="agregarListado">Listado de Gastos 
-			
-			 </div>
-			
+	
+		
+	
+		
 			
  <script src="./js/index.js"></script>		
 

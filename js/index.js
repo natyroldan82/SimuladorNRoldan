@@ -5,6 +5,7 @@ const listado=document.querySelector('#mostrar total');
 const agregarGastoListado=document.querySelector('#agregarListado');
 const btnInicial=document.getElementById("btnInicial");
 const presu=document.querySelector('#presupuestoInicial');
+
 //eventos
  
 eventListeners();
@@ -68,9 +69,7 @@ class MOSTRAR{
                 const {cantidad, nombre, id} = gasto;
                 const nuevoGasto= document.createElement('li');
              
-              
-
-              nuevoGasto.innerHTML=`${nombre} <span class="badge-primary badge-pill"> ${cantidad} </span>`;
+            nuevoGasto.innerHTML=`${nombre} <span class="badge-primary badge-pill"> ${cantidad} </span>`;
               agregarGastoListado.appendChild(nuevoGasto);
             })
             }
@@ -100,12 +99,13 @@ let presupuesto;
        
 }else{
         console.log(presupuesto)
-            const {gastos ,restante}=presupuesto;
+            const {gastos,restante}=presupuesto;
             mostrar.insertarPresupuesto(presupuesto);
             
         } 
 
-       
+     presu.value=""; 
+     presu.disabled= true; 
     }
 //validacion para el formulario agregar
 
@@ -146,26 +146,26 @@ function agregarGasto(e){
       // ingreso nuevo gasto
       presupuesto.nuevoGasto(gasto);
       document.getElementById("gasto").focus();
-      Swal.fire({
+      /*Swal.fire({
         position: 'center',
         icon: 'success',
         title: 'Se agregó Gasto',
         showConfirmButton: false,
         timer: 1000
-      })
-      //mostrar.imprimirAlerta('Gasto Correctamente'); cambie las alertas simples por SweetAlert
+      })*/
+      mostrar.imprimirAlerta('Gasto Correctamente'); //cambie las alertas simples por SweetAlert
       //imprimo los gastos
-      const {gastos ,restante}=presupuesto;
+      const {gastos,restante}=presupuesto;
     
 
       mostrar.agregarGastoListado(gastos);
-      mostrar.actualizarRestante(restante);
      
         const gastoString=JSON.stringify(gastos);
         localStorage.setItem('gastos',gastoString);
        
      formulario.reset();
      presu.value="";
+     
    
     }
 
@@ -202,13 +202,20 @@ actualizarFecha();
 
 
 
-
+//API
 
 fetch( 'https://www.dolarsi.com/api/api.php?type=valoresprincipales')
     .then (response => response.json())
     .then (data => {
+        let compra= document.getElementById('c1')
+        let venta= document.getElementById('v1')
+        compra.innerHTML= `${data['0'].casa.compra}`
+        venta.innerHTML= `${data['0'].casa.venta}`;
          console.log(data['0'].casa.compra),
+         console.log(data['0'].casa.nombre),
          console.log(data['0'].casa.venta)})
-         
      
+    
+   
+
     

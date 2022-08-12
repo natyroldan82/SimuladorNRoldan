@@ -203,14 +203,14 @@ actualizarFecha();
 
 
 //API
-
-fetch( 'https://www.dolarsi.com/api/api.php?type=valoresprincipales')
+const url= 'https://www.dolarsi.com/api/api.php?type=valoresprincipales'
+fetch(url)
     .then (response => response.json())
     .then (data => {
         let compra= document.getElementById('c1')
         let venta= document.getElementById('v1')
-        compra.innerHTML= `${data['0'].casa.compra}`
-        venta.innerHTML= `${data['0'].casa.venta}`;
+        compra.innerHTML= `$ ${data['0'].casa.compra}`
+        venta.innerHTML= `$ ${data['0'].casa.venta}`;
          console.log(data['0'].casa.compra),
          console.log(data['0'].casa.nombre),
          console.log(data['0'].casa.venta)})

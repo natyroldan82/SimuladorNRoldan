@@ -88,7 +88,7 @@ span{
     
 }
 .header{
-    background-color: darkgrey;
+    background-color: rgb(10, 33, 160);
     color: white;
     display:inline-block;
     width: 100%;
@@ -106,13 +106,13 @@ span{
 .comp{
     width: 50%;
     float: left;
-    background-color: beige;
+    background-color: rgb(220, 229, 245);
     margin-bottom: 3px;
 }
 .vent{
     width: 50%;
     float: right;
-    background-color: beige;
+    background-color: rgb(220, 229, 245);;
     margin-bottom: 3px;
 }
 .conte{

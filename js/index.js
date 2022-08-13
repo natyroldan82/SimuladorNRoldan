@@ -62,6 +62,7 @@ class MOSTRAR{
             document.querySelector('#saldo').textContent=restante; 
             
         }
+       
         //iterar
         agregarGastoListado(gastos){
             this.limpiarHTML();
@@ -70,8 +71,20 @@ class MOSTRAR{
                 const {cantidad, nombre, id} = gasto;
                 const nuevoGasto= document.createElement('li');
              
-            nuevoGasto.innerHTML=`${nombre} <span class="badge-primary badge-pill"> ${cantidad} </span>`;
+            nuevoGasto.innerHTML=`${nombre} <span class="badge-primary badge-pill"> $ ${cantidad} </span>`;
               agregarGastoListado.appendChild(nuevoGasto);
+
+              const btnBorrar = document.createElement ('button');
+              btnBorrar.classList.add('btn', 'btn-danger','borrar-gasto');
+              btnBorrar.textContent= 'Borrar';
+
+              nuevoGasto.appendChild(btnBorrar);
+
+
+             agregarGastoListado.appendChild(nuevoGasto);
+
+
+
             })
             }
             limpiarHTML(){
@@ -82,7 +95,16 @@ class MOSTRAR{
         actualizarRestante(restante){
             document.querySelector('#saldo').textContent= restante;
         }
-}
+        comprobarPresupuesto(presupuestoOjb){
+           const {presupuesto,restante}= presupuestoOjb;
+           const restanteDiv= document.querySelector('.restante');
+            
+           if (restante <= 0){
+                console.log ('Tu presupuesto se ha agotado','error');
+            }
+    
+        }
+    }
 //Instanciar
 const mostrar=new MOSTRAR(); 
  
@@ -213,11 +235,11 @@ fetch(url)
     .then (data => {
         let compra= document.getElementById('c1')
         let venta= document.getElementById('v1')
-        compra.innerHTML= `$ ${data['0'].casa.compra}`
-        venta.innerHTML= `$ ${data['0'].casa.venta}`;
-         console.log(data['0'].casa.compra),
-         console.log(data['0'].casa.nombre),
-         console.log(data['0'].casa.venta)})
+        compra.innerHTML= `$ ${data['1'].casa.compra}`
+        venta.innerHTML= `$ ${data['1'].casa.venta}`;
+         console.log(data['1'].casa.compra),
+         console.log(data['1'].casa.nombre),
+         console.log(data['1'].casa.venta)})
      
     
    

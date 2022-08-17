@@ -235,8 +235,8 @@ fetch(url)
     .then (data => {
         let compra= document.getElementById('c1')
         let venta= document.getElementById('v1')
-        compra.innerHTML= `$ ${data['1'].casa.compra}`
-        venta.innerHTML= `$ ${data['1'].casa.venta}`;
+        compra.innerHTML= `$${data['1'].casa.compra}`
+        venta.innerHTML= `$${data['1'].casa.venta}`;
          console.log(data['1'].casa.compra),
          console.log(data['1'].casa.nombre),
          console.log(data['1'].casa.venta)})

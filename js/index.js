@@ -1,5 +1,6 @@
 
 //variables y selectores
+//variables y selectores
 const formulario=document.querySelector('#agregar-gasto');
 const listado=document.querySelector('#mostrar total');
 const agregarGastoListado=document.querySelector('#agregarListado');
@@ -70,9 +71,10 @@ class MOSTRAR{
             gastos.forEach(gasto => {
                 const {cantidad, nombre, id} = gasto;
                 const nuevoGasto= document.createElement('li');
-             
-            nuevoGasto.innerHTML=`${nombre} <span class="badge-primary badge-pill"> $ ${cantidad} </span>`;
-              agregarGastoListado.appendChild(nuevoGasto);
+                 nuevoGasto.className= 'list-group-item d-flex align-items-center';
+                 nuevoGasto.dataset.id =id;
+                 nuevoGasto.innerHTML=`${nombre} <span class="badge-primary badge-pill"> $ ${cantidad} </span>`;
+                agregarGastoListado.appendChild(nuevoGasto);
 
               const btnBorrar = document.createElement ('button');
               btnBorrar.classList.add('btn', 'btn-danger','borrar-gasto');
@@ -194,6 +196,7 @@ function agregarGasto(e){
      
    
     }
+
 
    
     

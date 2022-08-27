@@ -71,7 +71,7 @@ class MOSTRAR{
             gastos.forEach(gasto => {
                 const {cantidad, nombre, id} = gasto;
                 const nuevoGasto= document.createElement('li');
-                 nuevoGasto.className= 'list-group-item d-flex align-items-center';
+                 nuevoGasto.className= 'list-group-item justify-content-between align-items-center';
                  nuevoGasto.dataset.id =id;
                  nuevoGasto.innerHTML=`${nombre} <span class="badge-primary badge-pill"> $ ${cantidad} </span>`;
                 agregarGastoListado.appendChild(nuevoGasto);

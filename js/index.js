@@ -36,7 +36,10 @@ class Presupuesto{
         this.restante= this.presupuesto - gastado;
         
     }
- 
+ eliminarGasto(id){
+  this.gastos= this.gastos.filter(gasto => gasto.id !== id);
+  this.calcularRestante();
+}
 }
 
 class MOSTRAR{
@@ -79,6 +82,10 @@ class MOSTRAR{
               const btnBorrar = document.createElement ('button');
               btnBorrar.classList.add('btn', 'btn-danger','borrar-gasto');
               btnBorrar.textContent= 'Borrar';
+              btnBorrar.onclick = () =>{
+                eliminarGasto(id);
+
+              }
 
               nuevoGasto.appendChild(btnBorrar);
 
@@ -98,11 +105,22 @@ class MOSTRAR{
             document.querySelector('#saldo').textContent= restante;
         }
         comprobarPresupuesto(presupuestoOjb){
-           const {presupuesto,restante}= presupuestoOjb;
+           const {restante}= presupuestoOjb;
            const restanteDiv= document.querySelector('.restante');
-            
+           
+          
            if (restante <= 0){
-                console.log ('Tu presupuesto se ha agotado','error');
+            restanteDiv.classList.remove ('alert-success');
+            restanteDiv.classList.add('alert-danger');
+            console.log('ya gastaste todo');
+            Swal.fire({
+                position: 'center',
+                icon: 'warning',
+                title: 'Te pasaste de tu presupuesto',
+                showConfirmButton: false,
+                timer: 2000
+              })
+                formulario.querySelector('button[type="submit"]').disabled=true;
             }
     
         }
@@ -184,10 +202,11 @@ function agregarGasto(e){
       //mostrar.imprimirAlerta('Gasto Correctamente'); //cambie las alertas simples por SweetAlert
       //imprimo los gastos
       const {gastos,restante} = presupuesto;
-    
-      mostrar.actualizarRestante (restante);
       mostrar.agregarGastoListado(gastos);
-     
+      mostrar.actualizarRestante (restante);
+      
+    mostrar.comprobarPresupuesto(presupuesto);
+
         const gastoString=JSON.stringify(gastos);
         localStorage.setItem('gastos',gastoString);
        
@@ -197,7 +216,13 @@ function agregarGasto(e){
    
     }
 
-
+function eliminarGasto(id){
+   presupuesto.eliminarGasto(id);
+   const{ gastos,restante}= presupuesto;
+   mostrar.agregarGastoListado(gastos);
+   mostrar.actualizarRestante(restante);
+   mostrar.comprobarPresupuesto(presupuesto);
+}
    
     
    //fecha . Utilice ésta libreria en formato independiente de JS,

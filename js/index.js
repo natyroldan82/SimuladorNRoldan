@@ -1,18 +1,19 @@
-
-//variables y selectores
 //variables y selectores
 const formulario=document.querySelector('#agregar-gasto');
 const listado=document.querySelector('#mostrar total');
 const agregarGastoListado=document.querySelector('#agregarListado');
 const btnInicial=document.getElementById("btnInicial");
 const presu=document.querySelector('#presupuestoInicial');
-
+const agregar= document.getElementById("btnAgregar");
+const nombre=document.getElementById('gasto'); //leo los datos del formulario
+const cantidad= Number(document.getElementById('cantidad'));
 //eventos
  
 eventListeners();
 function eventListeners()
 {
-    
+    nombre.value="";
+     cantidad.value="";
     presu.focus();
     btnInicial.addEventListener('click',preguntarPresupuesto);
     formulario.addEventListener('submit',agregarGasto);
@@ -84,7 +85,7 @@ class MOSTRAR{
               btnBorrar.textContent= 'Borrar';
               btnBorrar.onclick = () =>{
                 eliminarGasto(id);
-
+                formulario.focus();
               }
 
               nuevoGasto.appendChild(btnBorrar);
@@ -112,6 +113,7 @@ class MOSTRAR{
            if (restante <= 0){
             restanteDiv.classList.remove ('alert-success');
             restanteDiv.classList.add('alert-danger');
+            btnAgregar.disabled=true; 
             console.log('ya gastaste todo');
             Swal.fire({
                 position: 'center',
@@ -119,9 +121,17 @@ class MOSTRAR{
                 title: 'Te pasaste de tu presupuesto',
                 showConfirmButton: false,
                 timer: 2000
-              })
-                formulario.querySelector('button[type="submit"]').disabled=true;
-            }
+              }) }
+              else{
+                restanteDiv.classList.remove ('alert-danger');
+                restanteDiv.classList.add('alert-success');
+                
+              }
+               
+              presu.focus();
+              presu.value=""; 
+              presu.disabled= true;
+             
     
         }
     }
@@ -134,14 +144,15 @@ let presupuesto;
    function preguntarPresupuesto(){
    
     const presupuestoInicial=Number( document.querySelector('#presupuestoInicial').value);
- 
+    const nombre=document.querySelector('#gasto');
    presupuesto=new Presupuesto(presupuestoInicial);
  
    if (presupuestoInicial ===''|| presupuestoInicial === null
      || isNaN(presupuestoInicial)||presupuestoInicial <=0)
     { 
      window.location.reload();
-     mostrar.imprimirAlerta('Ingresa valor ','error');   
+     mostrar.imprimirAlerta('Ingresa valor ','error'); 
+      
        
 }else{
         console.log(presupuesto)
@@ -150,8 +161,11 @@ let presupuesto;
             
         } 
 
-     presu.value=""; 
-     presu.disabled= true; 
+        presu.value=""; 
+     presu.disabled= true;
+    
+     btnInicial.disabled= true;
+    nombre.focus();
     }
 //validacion para el formulario agregar
 
@@ -212,7 +226,8 @@ function agregarGasto(e){
        
      formulario.reset();
      presu.value="";
-     
+     nombre.value="";
+     cantidad.value="";
    
     }
 
@@ -222,10 +237,12 @@ function eliminarGasto(id){
    mostrar.agregarGastoListado(gastos);
    mostrar.actualizarRestante(restante);
    mostrar.comprobarPresupuesto(presupuesto);
+  btnAgregar.disabled= false;
+  document.getElementById("gasto").focus();
 }
    
     
-   //fecha . Utilice ésta libreria en formato independiente de JS,
+   //fecha . 
    (function(){
     let actualizarFecha= function(){
     const fecha= new Date(),
